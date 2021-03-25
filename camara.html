@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>QR Scanner Demo</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+     <link rel="stylesheet" href="./static/css/main.css">
+     <style>
+         body{
+             background: #0d6efd;
+             height: 100vh;
+             display: flex;
+             justify-content: center;
+             align-items: center;
+         }
+         #qr-video{
+             width:298px;
+         }
+         .containerVideo{
+            width: 300px; 
+            position: relative;
+            transform: scale(2.9) !important;
+            border: 1px solid silver;
+            border-radius:20px;
+            margin: auto;
+         }
+         #start-button, #stop-button{
+            padding: 5px 20px;
+            border-radius:10px;
+            color:#fff;
+            outline: none;
+            border: none;
+            background: #0dcaf0; 
+         }
+         #start-button:hover, #stop-button:hover{
+            background: #dc3545; 
+         }
+         .modal{
+             transform:scale(1.8);
+             top:650px;
+         }
+          
+    </style>
+</head>
+<body> 
+        <div class="d-flex justify-content-center">
+
+            <div class="containerVideo">
+
+                
+                <video id="qr-video" style="z-index: 8; border-top-left-radius: 20px; border-top-right-radius: 20px;"></video>
+                <div class="d-flex justify-content-space-between p-2">
+                    <img src="https://illacoe.com/camhtml/logo.png" alt="" srcset="" style="width:100px; object-fit:contain; z-index:9;margin-top:-65px;">
+                </div>
+                <div class="">
+                <div class="p-2" style="display:none;">
+                    <div class="row">
+                        <label for="">Detected QR code: </label>
+                        <span id="cam-qr-result">None</span>
+                    </div>
+                    <div class="row">
+                        <label>Last detected at: </label>
+                        <span id="cam-qr-result-timestamp"></span>
+                    </div>
+         
+                </div>
+                <div class="d-flex w-100 p-2" style="justify-content: space-around;">
+                    <button id="start-button">Start</button>
+                    <button id="stop-button">Stop</button>
+                </div>
+            </div>
+            </div>
+
+            
+           
+                
+                
+        </div>
+ 
+        
+ 
+
+
+
+
+
+
+        <!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <form>
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Regitro de Ingreso y Salida</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      
+            <div class="modal-body">
+                <div class="form-group">
+                    <label for="exampleInputEmail1">Rut</label>
+                    <input type="number" class="form-control" id="rutPersonal" disabled>
+                    <small id="emailHelp" class="form-text text-muted">Revisa si el RUT es el mismo</small>
+                </div>
+
+                <div class="form-group">
+                    <label for="exampleInputPassword1">Vehiculo</label>
+                    <select class="form-control" name="" id="vehiculoSeleccion">
+                        <option value="0">Pie</option>
+                        <option value="1">Vehiculo</option>
+                    </select>
+                </div>
+
+                <div class="form-group hide" id="ppuRow">
+                    <label for="exampleCheck1">Patente</label>
+                    <input type="text" class="form-control" style="text-transform: uppercase"  maxlength="6" id="patente">
+                    <small id="emailHelp" class="form-text text-muted">Asegurate de anotar bien la patente del vehículo</small>
+                </div>
+
+                <div class="form-group hide" id="notaRow">
+                    <label for="exampleCheck1">Observación</label>
+                    <input type="text" class="form-control" id="observacion">
+                    <small id="emailHelp" class="form-text text-muted">Puede ser cualquier observacion que te paresca relevante</small>
+                </div>
+            </div>
+            <div class="modal-footer hide" id="submitRow">
+                <button type="submit" class="btn btn-primary" id="submitButton" >Regitrar</button>
+            </div>
+         <div id="cam-has-camera" style="display:none;"></div>
+         <div id="cam-has-flash" style="display:none;"></div>
+        </div>
+    
+    </form>
+  </div>
+</div>
+ 
+<script type="module">
+    import QrScanner from "./static/js/cam/qr-scanner.min.js";
+    QrScanner.WORKER_PATH = "./static/js/cam/qr-scanner-worker.min.js";
+
+    const video = document.getElementById('qr-video');
+    const camHasCamera = document.getElementById('cam-has-camera');
+    const camHasFlash = document.getElementById('cam-has-flash');
+    // const flashToggle = document.getElementById('flash-toggle');
+    // const flashState = document.getElementById('flash-state');
+    const camQrResult = document.getElementById('cam-qr-result');
+    const camQrResultTimestamp = document.getElementById('cam-qr-result-timestamp');
+    // const fileSelector = document.getElementById('file-selector');
+    // const fileQrResult = document.getElementById('file-qr-result');
+
+    function setResult(label, result) {
+        label.textContent = result;
+        camQrResultTimestamp.textContent = new Date().toString();
+        label.style.color = 'teal';
+        clearTimeout(label.highlightTimeout);
+        label.highlightTimeout = setTimeout(() => label.style.color = 'inherit', 100);
+        let myModal = new bootstrap.Modal(document.getElementById('exampleModal'), {
+        keyboard: false
+        })
+        myModal.toggle()
+        
+        const url = new URL(result);
+        const args =  new URLSearchParams(url.search);
+        let rutC = args.get('RUN')
+        let rutS = rutC.replace (/-/gi, "")
+        document.getElementById('rutPersonal').value = rutS;
+        document.getElementById('rutPersonal').disable
+    }
+
+     
+
+    // ####### Web Cam Scanning #######
+
+    QrScanner.hasCamera().then(hasCamera => camHasCamera.textContent = hasCamera);
+
+    const scanner = new QrScanner(video, result => setResult(camQrResult, result), error => {
+        camQrResult.textContent = error;
+        camQrResult.style.color = 'inherit';
+    });
+    scanner.start().then(() => {
+        scanner.hasFlash().then(hasFlash => {
+            camHasFlash.textContent = hasFlash;
+            if (hasFlash) {
+                flashToggle.style.display = 'inline-block';
+                flashToggle.addEventListener('click', () => {
+                    scanner.toggleFlash().then(() => flashState.textContent = scanner.isFlashOn() ? 'on' : 'off');
+                });
+            }
+        });
+    });
+
+    // for debugging
+    window.scanner = scanner;
+
+    // document.getElementById('show-scan-region').addEventListener('change', (e) => {
+    //     const input = e.target;
+    //     const label = input.parentNode;
+    //     label.parentNode.insertBefore(scanner.$canvas, label.nextSibling);
+    //     scanner.$canvas.style.display = input.checked ? 'block' : 'none';
+    // });
+
+    // document.getElementById('inversion-mode-select').addEventListener('change', event => {
+    //     scanner.setInversionMode(event.target.value);
+    // });
+
+    document.getElementById('start-button').addEventListener('click', () => {
+        scanner.start();
+    });
+
+    document.getElementById('stop-button').addEventListener('click', () => {
+        scanner.stop();
+    });
+
+    // ####### File Scanning #######
+
+    // fileSelector.addEventListener('change', event => {
+    //     const file = fileSelector.files[0];
+    //     if (!file) {
+    //         return;
+    //     }
+    //     QrScanner.scanImage(file)
+    //         .then(result => setResult(fileQrResult, result))
+    //         .catch(e => setResult(fileQrResult, e || 'No QR code found.'));
+    // });
+
+    
+
+</script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script> 
+<script src="https://cdn.jsdelivr.net/npm/feather-icons@4.28.0/dist/feather.min.js" integrity="sha384-uO3SXW5IuS1ZpFPKugNNWqTZRRglnUJK6UAZ/gxOX80nxEkN9NcGZTftn6RzhGWE" crossorigin="anonymous"></script><script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js" integrity="sha384-zNy6FEbO50N+Cg5wap8IKA4M/ZnLJgzc6w2NqACZaK0u0FXfOWRRJOnQtpZun8ha" crossorigin="anonymous"></script>
+<script src="./static/js/components/modal.anidado.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,70 @@
+.logo{
+    width: 100px;
+    object-fit: contain;
+}
+
+.hide{
+    display: none !important;
+}
+.table-striped {
+    margin-bottom: 0; 
+}
+
+.table-striped thead th {
+    border-top-width: 0; 
+}
+        
+.table-striped tbody td:first-child, .table-striped thead th:first-child {
+    padding-left: 1.5rem !important; 
+}
+        
+.table-striped tbody td:last-child, .table-striped thead th:last-child {
+    padding-right: 1.5rem !important; 
+}
+        
+.card > .table-striped:first-child > tbody:first-child > tr:first-child > td:first-child, .card > .table-striped:first-child > tbody:first-child > tr:first-child > th:first-child, .card > .table-striped:first-child > tfoot:first-child > tr:first-child > td:first-child, .card > .table-striped:first-child > tfoot:first-child > tr:first-child > th:first-child, .card > .table-striped:first-child > thead:first-child > tr:first-child > td:first-child, .card > .table-striped:first-child > thead:first-child > tr:first-child > th:first-child, .card > .table-responsive:first-child > .table-striped > tbody:first-child > tr:first-child > td:first-child, .card > .table-responsive:first-child > .table-striped > tbody:first-child > tr:first-child > th:first-child, .card > .table-responsive:first-child > .table-striped > tfoot:first-child > tr:first-child > td:first-child, .card > .table-responsive:first-child > .table-striped > tfoot:first-child > tr:first-child > th:first-child, .card > .table-responsive:first-child > .table-striped > thead:first-child > tr:first-child > td:first-child, .card > .table-responsive:first-child > .table-striped > thead:first-child > tr:first-child > th:first-child {
+    border-top-left-radius: .5rem; 
+}
+        
+.card > .table-striped:first-child > tbody:first-child > tr:first-child > td:last-child, .card > .table-striped:first-child > tbody:first-child > tr:first-child > th:last-child, .card > .table-striped:first-child > tfoot:first-child > tr:first-child > td:last-child, .card > .table-striped:first-child > tfoot:first-child > tr:first-child > th:last-child, .card > .table-striped:first-child > thead:first-child > tr:first-child > td:last-child, .card > .table-striped:first-child > thead:first-child > tr:first-child > th:last-child, .card > .table-responsive:first-child > .table-striped > tbody:first-child > tr:first-child > td:last-child, .card > .table-responsive:first-child > .table-striped > tbody:first-child > tr:first-child > th:last-child, .card > .table-responsive:first-child > .table-striped > tfoot:first-child > tr:first-child > td:last-child, .card > .table-responsive:first-child > .table-striped > tfoot:first-child > tr:first-child > th:last-child, .card > .table-responsive:first-child > .table-striped > thead:first-child > tr:first-child > td:last-child, .card > .table-responsive:first-child > .table-striped > thead:first-child > tr:first-child > th:last-child {
+    border-top-right-radius: .5rem; 
+}
+
+.busqueda__container{
+    display: flex;
+    flex-direction: row;
+}
+/* .table>tbody{
+    vertical-align: middle;
+}
+#tablaRowBusqueda > tr{
+    height: 18px;
+}*/
+td{
+   vertical-align: middle;
+} 
+        
+@media (max-width: 1250px) {
+    .btn-toolbar > * {
+        display: flex;
+        width: 100%;
+        margin-bottom: 10px;
+    }
+    flex-md-nowrap {
+        flex-wrap: wrap !important;
+    }
+    .busqueda__container{
+        display: flex;
+        flex-direction: column;
+    }
+}
+@media (max-width: 768px) {
+    .btn-toolbar > * {
+        display: flex;
+        width: 100%;
+        margin-bottom: 10px;
+    }
+    flex-md-nowrap {
+        flex-wrap: wrap !important;
+    }
+}
