@@ -17,27 +17,35 @@
                 </button>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                    <li class="nav-item">
+                  <li class="nav-item">
                     <a class="nav-link" aria-current="page" href="./television.html">Televisor</a>
                     </li>
                     <li class="nav-item">
-                    <a class="nav-link active" href="./buscador.html">Buscador</a>
-                    </li>  
+                    <a class="nav-link " href="./buscador.html">Buscador</a>
+                    </li>   
+                    <li class="nav-item ">
+                      <a class="nav-link" href="./funcionarios.html">Funcionarios</a>
+                    </li>
                     <li class="nav-item">
-                    <a class="nav-link" href="./index.html">Nuevo Resgistro</a>
-                    </li>  
+                      <a class="nav-link active" href="./visitas.html">Visitas</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" href="./camara.html">Registro QR</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" href="./manual.html">Registro Manual</a>
+                    </li>
                 </ul>
                 <ul class="d-flex navbar-nav ">
                     <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        Profile
+                      @faena
                     </a>
-                    <ul class="dropdown-menu " aria-labelledby="navbarDropdown" style="left: -106px;">
-                        <li><a class="dropdown-item" href="#">Action</a></li>
-                        <li><a class="dropdown-item" href="#">Another action</a></li>
-                        <li><hr class="dropdown-divider"></li>
-                        <li><a class="dropdown-item" href="#">Something else here</a></li>
-                    </ul>
+                    <ul class="dropdown-menu " aria-labelledby="navbarDropdown" style="left: -80px;">
+                      <li><a class="dropdown-item" href="#">Configuracion</a></li>
+                      <li><hr class="dropdown-divider"></li>
+                      <li><a class="dropdown-item" href="#">Cerrar Sesion</a></li>
+                  </ul>
                     </li>
                 </ul>
                 </div>
@@ -79,7 +87,9 @@
                 <form class="btn-toolbar mb-2 mb-md-0" id="formularioVisitas">
                   <input type="hidden" name="ping" value="1">
                     <div class="btn-group me-2">
-                        <input type="button" class="btn btn-sm btn-outline-secondary dropdown-toggle"  value="Ingresar" id="" name="submit">
+                      <button type="button" class="btn btn-outline-secondary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                        Ingresar
+                      </button>
                     </div> 
                 </form>
                   
@@ -99,97 +109,217 @@
                   </thead>
                   <tbody id="tablaRowVisitas">
                   <!-- Resultados de Busqueda Visitas  -->
-                  <tr>
-                    <td>Camila Albarracin Fuentes</td>
-                    <td>99.993.939-3</td>
-                    <td>Tunneling</td>
-                    <td>En el recinto</td> 
-                    <td> <div class="btn-group d-flex">
-                    <button type="button" class="btn btn-primary " data-bs-toggle="dropdown" aria-expanded="false">
-                      Generar
-                    </button>
-                    <button type="button" class="btn btn-secondary " data-bs-toggle="dropdown" aria-expanded="false">
-                      Quitar
-                    </button> 
-                    
-                    
-                  </div></td>
-                 </tr>
-
-                 <tr>
-                  <td>Camila Albarracin Fuentes</td>
-                  <td>99.993.939-3</td>
-                  <td>Tunneling</td>
-                  <td>En el recinto</td> 
-                  <td> <div class="btn-group d-flex">
-                  <button type="button" class="btn btn-primary " data-bs-toggle="dropdown" aria-expanded="false">
-                    Generar
-                  </button>
-                  <button type="button" class="btn btn-secondary " data-bs-toggle="dropdown" aria-expanded="false">
-                    Quitar
-                  </button> 
-                  
-                  
-                </div></td>
-               </tr>
-
-               <tr>
-                <td>Camila Albarracin Fuentes</td>
-                <td>99.993.939-3</td>
-                <td>Tunneling</td>
-                <td>En el recinto</td> 
-                <td> <div class="btn-group d-flex">
-                <button type="button" class="btn btn-primary " data-bs-toggle="dropdown" aria-expanded="false">
-                  Generar
-                </button>
-                <button type="button" class="btn btn-secondary " data-bs-toggle="dropdown" aria-expanded="false">
-                  Quitar
-                </button> 
-                
-                
-              </div></td>
-             </tr>
-             <tr>
-              <td>Camila Albarracin Fuentes</td>
-              <td>99.993.939-3</td>
-              <td>Tunneling</td>
-              <td>En el recinto</td> 
-              <td> <div class="btn-group d-flex">
-              <button type="button" class="btn btn-primary " data-bs-toggle="dropdown" aria-expanded="false">
-                Generar
-              </button>
-              <button type="button" class="btn btn-secondary " data-bs-toggle="dropdown" aria-expanded="false">
-                Quitar
-              </button> 
-              
-              
-            </div></td>
-           </tr><tr>
-            <td>Camila Albarracin Fuentes</td>
-            <td>99.993.939-3</td>
-            <td>Tunneling</td>
-            <td>En el recinto</td> 
-            <td> <div class="btn-group d-flex">
-            <button type="button" class="btn btn-primary " data-bs-toggle="dropdown" aria-expanded="false">
-              Generar
-            </button>
-            <button type="button" class="btn btn-secondary " data-bs-toggle="dropdown" aria-expanded="false">
-              Quitar
-            </button> 
-            
-            
-          </div></td>
-         </tr>
-
+                    <tr>
+                      <td>Camila Albarracin Fuentes</td>
+                      <td>99.993.939-3</td>
+                      <td>Tunneling</td>
+                      <td>En el recinto</td> 
+                      <td> 
+                        <div class="btn-group d-flex">
+                          <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal2">
+                            Generar
+                          </button>
+                          <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#exampleModal3">
+                            Quitar
+                          </button>
+                         </div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>Camila Albarracin Fuentes</td>
+                      <td>99.993.939-3</td>
+                      <td>Tunneling</td>
+                      <td>En el recinto</td> 
+                      <td> 
+                        <div class="btn-group d-flex">
+                          <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal2">
+                            Generar
+                          </button>
+                          <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#exampleModal3">
+                            Quitar
+                          </button>
+                         </div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>Camila Albarracin Fuentes</td>
+                      <td>99.993.939-3</td>
+                      <td>Tunneling</td>
+                      <td>En el recinto</td> 
+                      <td> 
+                        <div class="btn-group d-flex">
+                          <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal2">
+                            Generar
+                          </button>
+                          <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#exampleModal3">
+                            Quitar
+                          </button>
+                         </div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>Camila Albarracin Fuentes</td>
+                      <td>99.993.939-3</td>
+                      <td>Tunneling</td>
+                      <td>En el recinto</td> 
+                      <td> 
+                        <div class="btn-group d-flex">
+                          <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal2">
+                            Generar
+                          </button>
+                          <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#exampleModal3">
+                            Quitar
+                          </button>                        
+                        </div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>Camila Albarracin Fuentes</td>
+                      <td>99.993.939-3</td>
+                      <td>Tunneling</td>
+                      <td>En el recinto</td> 
+                      <td> 
+                        <div class="btn-group d-flex">
+                          <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal2">
+                            Generar
+                          </button>
+                          <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#exampleModal3">
+                            Quitar
+                          </button>
+                         </div>
+                      </td>
+                    </tr>
                   </tbody>
                 </table>
               </div>
             </main>
           </div>
-        </div>     
+        </div>
+     
+
+  
+        
+
+ 
+
+
+
 
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script> 
         <script src="https://cdn.jsdelivr.net/npm/feather-icons@4.28.0/dist/feather.min.js" integrity="sha384-uO3SXW5IuS1ZpFPKugNNWqTZRRglnUJK6UAZ/gxOX80nxEkN9NcGZTftn6RzhGWE" crossorigin="anonymous"></script>    
         <script src="./static/js/fetch/get_visitas.js"></script>
+
+        
+
+ 
+        <!-- Modal 2 -->
+        <div class="modal fade" id="exampleModal2" tabindex="-1" aria-labelledby="exampleModalLabel2" aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Generar permiso de ingreso</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body">
+                <p>Le daras permiso de ingresar a esta nuevo funcionario registrado como visita ¿Estas seguro de continuar?.</p>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                <button type="button" class="btn btn-primary">Aceptar</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+        <!-- Modal  3-->
+        <div class="modal fade" id="exampleModal3" tabindex="-1" aria-labelledby="exampleModalLabel3" aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Quitar permiso de ingreso</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body">
+                <p>Le vas a quitar el permiso  este funcionario registrado como visita ¿Estas seguro de continuar?.</p>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                <button type="button" class="btn btn-primary">Aceptar</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+        <!-- Modal 1 -->
+        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel2" aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Registrar nuevo funcionario como visita</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body">
+                <div class="col-md-12 m-3"> 
+                  <form  novalidate="" style="width: 95%;">
+                    <div class="row g-3">
+                        
+                      <div class="col-sm-6">
+                        <label for="firstName" class="form-label">Rut</label>
+                        <input type="text" class="form-control" id="firstName" placeholder="Sin puntos ni guión" value="" required="">
+                        <div class="invalid-feedback">
+                          Sin puntos ni guión
+                        </div>
+                      </div>
+                      <div class="col-sm-6">
+                        <label for="firstName" class="form-label">Nombre</label>
+                        <input type="text" class="form-control" id="firstName" placeholder="Caaa Meeee Haaaa Laaaa" value="" required="">
+                        <div class="invalid-feedback">
+                          Caaa Meeee Haaaa Laaaa
+                        </div>
+                      </div>
+    
+                      <div class="col-md-6">
+                        <label for="country" class="form-label">Cargo</label>
+                        <select class="form-select" id="country" required="">
+                          <option value="">Cargo 1</option>
+                          <option>Cargo 2</option>
+                        </select>
+                        <div class="invalid-feedback">
+                          Porfavor ingresa un campo valido.
+                        </div>
+                      </div>
+    
+                      <div class="col-md-6">
+                        <label for="country" class="form-label">Empresa</label>
+                        <select class="form-select" id="country" required="">
+                          <option value="">Empresa 1</option>
+                          <option>Empresa 2</option>
+                        </select>
+                        <div class="invalid-feedback">
+                          Porfavor ingresa un campo valido.
+                        </div>
+                      </div>
+    
+                        <div class="col-sm-12">
+                          <label for="firstName" class="form-label">Observación</label>
+                          <input type="text" class="form-control" id="firstName" placeholder="" value="" required="">
+                          <div class="invalid-feedback">
+                            Sin puntos ni guión
+                          </div>
+                        </div>
+                  </form>
+                </div>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                <button type="button" class="btn btn-primary">Registrar</button>
+              </div>
+    
+            </div>
+          </div>
+        </div>
     </body>
 </html>
